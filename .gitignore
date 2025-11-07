@@ -2,6 +2,7 @@
 .godot/
 /android/
 
-./gitattributes
-./DS_Store
-./gitignore
+.gitattributes
+.DS_Store
+.gitignore
+.editorconfig
