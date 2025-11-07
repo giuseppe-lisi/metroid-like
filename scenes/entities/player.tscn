@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://hmqtw1hv0sk"]
+
+[ext_resource type="Script" uid="uid://c01jp7oecek4l" path="res://scenes/entities/player.gd" id="1_ucweq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
+height = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ucweq")
+jump_strenght = null
+gravity = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0qees")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
