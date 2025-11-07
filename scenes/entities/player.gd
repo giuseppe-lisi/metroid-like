@@ -25,3 +25,8 @@ func _physics_process(delta: float) -> void:
 	shooting()
 	velocity.x = direction_x * speed
 	move_and_slide()
+	animation()
+
+func animation():
+	$Legs.flip_h = direction_x < 0
+	$AnimationPlayer.current_animation = "run_animation" if direction_x else "idle"

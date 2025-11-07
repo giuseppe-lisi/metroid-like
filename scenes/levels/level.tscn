@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://do3nvlnc8bffn"]
+[gd_scene load_steps=5 format=3 uid="uid://do3nvlnc8bffn"]
 
 [ext_resource type="Script" uid="uid://lgir5rmtx7l8" path="res://scenes/levels/level.gd" id="1_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://hmqtw1hv0sk" path="res://scenes/entities/player.tscn" id="1_bovvr"]
+[ext_resource type="Texture2D" uid="uid://bxct7ew1p8677" path="res://icon.svg" id="2_b2cq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftxyw"]
-size = Vector2(124, 104)
+size = Vector2(224, 104)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_b2cq8")
@@ -12,8 +13,13 @@ script = ExtResource("1_b2cq8")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(117, 104)
+position = Vector2(167, 104)
 shape = SubResource("RectangleShape2D_ftxyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(167.00002, 69.5)
+scale = Vector2(1.75, 0.28906247)
+texture = ExtResource("2_b2cq8")
 
 [node name="Entities" type="Node2D" parent="."]
 
