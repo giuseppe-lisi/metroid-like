@@ -2,6 +2,20 @@ extends CharacterBody2D
 
 var direction_x: float
 var speed: int = 50
+var direction
+
+# player torso sprite follows mouse direction
+const gun_directions = {
+	Vector2i(1,0): 0,
+	Vector2i(1,1): 1,
+	Vector2i(0,1): 2,
+	Vector2i(-1,1): 3,
+	Vector2i(-1,0): 4,
+	Vector2i(-1,-1): 5,
+	Vector2i(0,-1): 6,
+	Vector2i(1,-1): 7
+}
+
 @export var jump_strenght := 10
 @export var gravity := 10
 signal shoot(pos: Vector2, dir: Vector2)
@@ -28,5 +42,11 @@ func _physics_process(delta: float) -> void:
 	animation()
 
 func animation():
+	var mouse_pos = get_local_mouse_position().normalized()
+	var adjusted_mouse_pos = Vector2i(round(mouse_pos.x), round(mouse_pos.y))
 	$Legs.flip_h = direction_x < 0
-	$AnimationPlayer.current_animation = "run_animation" if direction_x else "idle"
+	if is_on_floor():
+		$AnimationPlayer.current_animation = "run_animation" if direction_x else "idle"
+	else:
+		$AnimationPlayer.current_animation = "jumping"
+	$Torso.frame = gun_directions[adjusted_mouse_pos]

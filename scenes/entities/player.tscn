@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hmqtw1hv0sk"]
+[gd_scene load_steps=9 format=3 uid="uid://hmqtw1hv0sk"]
 
 [ext_resource type="Script" uid="uid://c01jp7oecek4l" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
+radius = 7.0
 height = 32.0
 
 [sub_resource type="Animation" id="Animation_1ie0h"]
@@ -53,10 +54,27 @@ tracks/0/keys = {
 "values": [16]
 }
 
+[sub_resource type="Animation" id="Animation_5u6hq"]
+resource_name = "jumping"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5u6hq"]
 _data = {
 &"RESET": SubResource("Animation_42nxq"),
 &"idle": SubResource("Animation_08t41"),
+&"jumping": SubResource("Animation_5u6hq"),
 &"run_animation": SubResource("Animation_1ie0h")
 }
 
@@ -72,6 +90,12 @@ zoom = Vector2(3, 3)
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Torso" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("2_08t41")
+hframes = 8
+vframes = 3
 
 [node name="Legs" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
