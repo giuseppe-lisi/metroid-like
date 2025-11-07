@@ -4,6 +4,7 @@ var direction_x: float
 var speed: int = 50
 @export var jump_strenght := 10
 @export var gravity := 10
+signal shoot(pos: Vector2, dir: Vector2)
 
 func get_input():
 	direction_x = Input.get_axis("left","right")
@@ -16,7 +17,7 @@ func apply_gravity(delta):
 func shooting():
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0:
 		$ReloadTimer.start()
-		print("shoot")
+		shoot.emit(position, get_local_mouse_position().normalized())
 
 func _physics_process(delta: float) -> void:
 	get_input()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://do3nvlnc8bffn"]
+[gd_scene load_steps=4 format=3 uid="uid://do3nvlnc8bffn"]
 
+[ext_resource type="Script" uid="uid://lgir5rmtx7l8" path="res://scenes/levels/level.gd" id="1_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://hmqtw1hv0sk" path="res://scenes/entities/player.tscn" id="1_bovvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftxyw"]
 size = Vector2(124, 104)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_b2cq8")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -19,3 +21,7 @@ shape = SubResource("RectangleShape2D_ftxyw")
 position = Vector2(69, 31)
 jump_strenght = 400
 gravity = 1000
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
